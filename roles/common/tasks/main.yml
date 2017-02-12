@@ -1,0 +1,20 @@
+---
+- name: Install Python for ansible
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+  register: output
+  changed_when: output.stdout != ""
+
+- setup: # aka gather_facts
+
+- name: Update and install common tools
+  apt: 
+    name: {{item}} 
+    state: installed
+    update_cache: yes
+  with_items:
+    - openjdk-{{jreversion}}-jre-headless
+
+- name: Add elastic key to all nodes
+  apt_key:
+    url: {{elasticgpgkey}}
+    state: present

@@ -1,0 +1,33 @@
+---
+- name: install base tools
+  hosts: all
+  become: yes
+  become_method: sudo
+
+  roles:
+    - common
+
+- name: install elasticsearch
+  hosts: elasticsearch
+  become: yes
+  become_method: sudo
+
+  roles: 
+    - elastic
+
+- name: install logstash
+  hosts: logstash
+  become: yes
+  become_method: sudo
+
+  roles: 
+    - logstash
+
+- name: install kibana
+  hosts: kibana
+  become: yes
+  become_method: sudo
+
+  roles: 
+    - nginx
+    - kibana

@@ -1,0 +1,23 @@
+---
+- name: Add elastic source
+  apt_repository:
+    repo: "{{elasticsearch_source}} main stable"
+    state: present
+    filename: elastic
+
+- name: Install elastic
+  apt:
+    name: elasticsearch
+    state: installed
+
+- name: Configure elastic
+  template:
+    src: elasticsearch.yml.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+    owner: root
+    group: elasticsearch
+    mode: 0750
+  notify: restart elasticsearch
+
+- name: Start elasticsearch
+  service: name=elasticsearch state=started enabled=yes

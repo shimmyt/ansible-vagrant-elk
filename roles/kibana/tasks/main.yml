@@ -1,0 +1,12 @@
+---
+- name: Add kibana source
+  apt_repository:
+    repo: "{{kibana_source}} main stable"
+    state: present
+    filename: kibana
+
+- name: Install Kibana
+  apt:
+    name: kibana
+    state: installed
+    

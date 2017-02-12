@@ -1,0 +1,17 @@
+---
+# JRE version
+jreversion: 9
+
+# Elasticsearch Info
+elasticsearch_gpg_key: https://packages.elastic.co/GPG-KEY-elasticsearch
+elasticsearch_source: http://packages.elastic.co/elasticsearch/2.x/debian
+elasticsearch_cluster_name: vagrant_elk_demo
+elasticsearch_data_path: /opt/elasticsearch/data
+elasticsearch_dath_log: /var/log/elasticsearch
+elasticsearch_http_port: 9200
+
+# Kibana info
+kibana_source: http://packages.elastic.co/kibana/4.5/debian
+
+# Logstash info
+logstash_source: http://packages.elastic.co/logstash/2.3/debian
